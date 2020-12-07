@@ -1,0 +1,244 @@
+/*
+ * Copyright (c) 2018-2020 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+	model = "Avnet AVT9152 Dev Kit";
+	compatible = "avnet,nrf9160-avt9152";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+	};
+	
+	inter_conns {
+		compatible = "gpio-keys";
+		inter_conn0: inter_conn_0  {
+			gpios = <&gpio0 17 0>;
+			label = "nRF52 connector 1";
+		};
+		inter_conn1: inter_conn_1 {
+			gpios = <&gpio0 18 0>;
+			label = "nRF52 connector 2";
+		};
+		inter_conn2: inter_conn_2 {
+			gpios = <&gpio0 19 0>;
+			label = "nRF52 connector 3";
+		};
+		inter_conn3: inter_conn_3 {
+			gpios = <&gpio0 5 0>;
+			label = "nRF52 connector 4";
+		};
+		inter_conn4: inter_conn_4 {
+			gpios = <&gpio0 6 0>;
+			label = "nRF52 connector 5";
+		};
+		inter_conn5: inter_conn_5 {
+			gpios = <&gpio0 7 0>;
+			label = "nRF52 connector 6";
+		};
+		inter_conn6: inter_conn_6 {
+			gpios = <&gpio0 27 0>;
+			label = "nRF52 Reset";
+		};
+		
+	};
+
+	arduino_header: connector {
+		compatible = "arduino-header-r3";
+		#gpio-cells = <2>;
+		gpio-map-mask = <0xffffffff 0xffffffc0>;
+		gpio-map-pass-thru = <0 0x3f>;
+		gpio-map = <2 0 &gpio0 13 0>,	/* A2 */
+			   <3 0 &gpio0 14 0>,	/* A3 */
+			   <4 0 &gpio0 13 0>,	/* A4 */
+			   <5 0 &gpio0 14 0>,	/* A5 */
+			   <6 0 &gpio0 15 0>,	/* D0 */
+			   <7 0 &gpio0 16 0>,	/* D1 */
+			   <8 0 &gpio0 15 0>,	/* D2 */
+			   <9 0 &gpio0 16 0>,	/* D3 */
+			   <12 0 &gpio0 20 0>,	/* D6 */
+			   <13 0 &gpio0 21 0>,	/* D7 */
+			   <14 0 &gpio0 24 0>,	/* D8 */
+			   <15 0 &gpio0 25 0>,	/* D9 */
+			   <16 0 &gpio0 20 0>,	/* D10 */
+			   <17 0 &gpio0 21 0>,	/* D11 */
+			   <18 0 &gpio0 24 0>,	/* D12 */
+			   <19 0 &gpio0 25 0>;	/* D13 */
+	};
+
+	arduino_pins {
+		compatible = "gpio-keys";
+		arduino_pin2: arduino_pin_2 {
+			gpios = <&gpio0 13 0>;
+			label = "Arduino A2";
+		};
+		arduino_pin3: arduino_pin_3 {
+			gpios = <&gpio0 14 0>;
+			label = "Arduino A3";
+		};
+		arduino_pin4: arduino_pin_4 {
+			gpios = <&gpio0 13 0>;
+			label = "Arduino A4";
+		};
+		arduino_pin5: arduino_pin_5 {
+			gpios = <&gpio0 14 0>;
+			label = "Arduino A5";
+		};
+		arduino_pin6: arduino_pin_6 {
+			gpios = <&gpio0 15 0>;
+			label = "Arduino D0";
+		};
+		arduino_pin7: arduino_pin_7 {
+			gpios = <&gpio0 16 0>;
+			label = "Arduino D1";
+		};
+		arduino_pin8: arduino_pin_8 {
+			gpios = <&gpio0 15 0>;
+			label = "Arduino D2";
+		};
+		arduino_pin9: arduino_pin_9 {
+			gpios = <&gpio0 16 0>;
+			label = "Arduino D3";
+		};
+		arduino_pin12: arduino_pin_12 {
+			gpios = <&gpio0 20 0>;
+			label = "Arduino D6";
+		};
+		arduino_pin13: arduino_pin_13 {
+			gpios = <&gpio0 21 0>;
+			label = "Arduino D7";
+		};
+		arduino_pin14: arduino_pin_14 {
+			gpios = <&gpio0 24 0>;
+			label = "Arduino D8";
+		};
+		arduino_pin15: arduino_pin_15 {
+			gpios = <&gpio0 25 0>;
+			label = "Arduino D9";
+		};
+		arduino_pin16: arduino_pin_16 {
+			gpios = <&gpio0 20 0>;
+			label = "Arduino D10";
+		};
+		arduino_pin17: arduino_pin_17 {
+			gpios = <&gpio0 21 0>;
+			label = "Arduino D11";
+		};
+		arduino_pin18: arduino_pin_18 {
+			gpios = <&gpio0 24 0>;
+			label = "Arduino D12";
+		};
+		arduino_pin19: arduino_pin_19 {
+			gpios = <&gpio0 25 0>;
+			label = "Arduino D13";
+		};
+	};
+
+	/* These aliases are provided for compatibility with samples */
+	aliases {
+
+		interconn-c0 = &inter_conn0;
+		interconn-c1 = &inter_conn1;
+		interconn-c2 = &inter_conn2;
+		interconn-c3 = &inter_conn3;
+		interconn-c4 = &inter_conn4;
+		interconn-c5 = &inter_conn5;
+
+		nrf52-reset = &inter_conn6;
+
+		ard-a2 = &arduino_pin2;
+		ard-a3 = &arduino_pin3;
+		ard-a4 = &arduino_pin4;
+		ard-a5 = &arduino_pin5;
+		ard-d0 = &arduino_pin6;
+		ard-d1 = &arduino_pin7;
+		ard-d2 = &arduino_pin8;
+		ard-d3 = &arduino_pin9;
+		ard-d6 = &arduino_pin12;
+		ard-d7 = &arduino_pin13;
+		ard-d8 = &arduino_pin14;
+		ard-d9 = &arduino_pin15;
+		ard-d10 = &arduino_pin16;
+		ard-d11 = &arduino_pin17;
+		ard-d12 = &arduino_pin18;
+		ard-d13 = &arduino_pin19;
+
+		debug-uart = &uart0;
+		sens-i2c = &i2c3;
+		
+	};
+
+};
+
+&uart0 {
+	compatible = "nordic,nrf-uarte";
+	current-speed = <115200>;
+	status = "okay";
+	tx-pin = <25>;
+	rx-pin = <24>;
+};
+
+&flash0 {
+	/*
+	 * For more information, see:
+	 * https://docs.zephyrproject.org/latest/guides/dts/legacy-macros.html#legacy-flash-partitions
+	 */
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x00000000 0x10000>;
+		};
+		slot0_partition: partition@10000 {
+			label = "image-0";
+		};
+		slot0_ns_partition: partition@50000 {
+			label = "image-0-nonsecure";
+		};
+		slot1_partition: partition@80000 {
+			label = "image-1";
+		};
+		slot1_ns_partition: partition@c0000 {
+			label = "image-1-nonsecure";
+		};
+		scratch_partition: partition@f0000 {
+			label = "image-scratch";
+			reg = <0x000f0000 0xa000>;
+		};
+		storage_partition: partition@fa000 {
+			label = "storage";
+			reg = <0x000fa000 0x00006000>;
+		};
+	};
+};
+
+/ {
+
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		sram0_s: image_s@20000000 {
+			/* Secure image memory */
+		};
+
+		sram0_bsd: image_bsd@20010000 {
+			/* BSD (shared) memory */
+		};
+
+		sram0_ns: image_ns@20020000 {
+			/* Non-Secure image memory */
+		};
+	};
+};
+
+/* Include partition configuration file */
+#include "nrf9160_avt9152_partition_conf.dts"

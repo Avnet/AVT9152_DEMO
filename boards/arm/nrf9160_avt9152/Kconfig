@@ -1,0 +1,15 @@
+# nRF9160 PCA10090 board configuration
+
+# Copyright (c) 2018 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_NRF52840_GPIO_RESET
+	bool "Use nRF52840 GPIO reset pin"
+	default y if BT_H4
+	depends on BOARD_NRF9160_AVT9152 || BOARD_NRF9160_AVT9152NS
+	help
+	  Use a GPIO pin to reset the nRF52840 controller and let it wait until all
+	  bytes traveling to the H4 device have been received and drained, thus
+	  ensuring communication can begin correctly.
+
+

@@ -1,0 +1,38 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+/ {
+	chosen {
+		zephyr,bt-uart = &uart2;
+	};
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&uart1 {
+	compatible = "nordic,nrf-uarte";
+	current-speed = <115200>;
+	status = "okay";
+	tx-pin = <21>;
+	rx-pin = <1>; 
+};
+
+&uart2 {
+	compatible = "nordic,nrf-uarte";
+	current-speed = <1000000>;
+	hw-flow-control;
+	status = "okay";
+	tx-pin = <18>;
+	rx-pin = <17>;
+	rts-pin = <5>;
+	cts-pin = <19>;
+};
+
+&i2c3 {
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	sda-pin = <23>;
+	scl-pin = <22>;
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};

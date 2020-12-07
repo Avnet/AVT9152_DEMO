@@ -1,0 +1,12 @@
+identifier: nrf9160_avt9152ns
+name: nRF9160-AVT9152-Non-Secure
+type: mcu
+arch: arm
+toolchain:
+  - gnuarmemb
+  - xtools
+  - zephyr
+ram: 128
+flash: 192
+supported:
+ 

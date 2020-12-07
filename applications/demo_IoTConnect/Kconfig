@@ -1,0 +1,43 @@
+#
+# Copyright (c) 2019 Nordic Semiconductor
+#
+# SPDX-License-Identifier: LicenseRef-BSD-5-Clause-Nordic
+#
+
+menu "Demo IoTConnect"
+
+config DEMO_AT_MAX_PARAM
+	int "Max number of parameters in AT command"
+	default 8
+	
+config DEMO_ENVIRONMENT_DATA_SEND_INTERVAL
+	int "Interval in seconds for sending environment data"
+	default 60
+	help
+	  How often to send environment sensor data.
+	  If the GPS is active, sensor data will not be sent before it is
+	  stopped. The unit is seconds.
+
+
+#
+# A-GPS
+#
+config DEMO_SUPL_SERVER
+	string "SUPL server"
+	default "supl.google.com"
+
+config DEMO_SUPL_SERVER_PORT
+	int "SUPL server port"
+	default 7276
+
+module = DEMO_IOTCONNECT
+module-str = demo
+source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
+
+endmenu
+
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu
+
+

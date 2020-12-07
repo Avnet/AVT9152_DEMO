@@ -1,0 +1,8 @@
+# nRF52840 AVT9152 board configuration
+
+# Copyright (c) 2016 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_NRF52840_AVT9152
+	bool "NRF52840 AVT9152"
+	depends on SOC_NRF52840_QIAA

@@ -1,0 +1,266 @@
+/*
+ * Copyright (c) 2017 Linaro Limited
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52840_qiaa.dtsi>
+
+/ {
+	model = "Avnet AVT9152 Dev Kit";
+	compatible = "avnet,nrf52840-avt9152";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+
+	inter_conns {
+		compatible = "gpio-keys";
+		inter_conn0: inter_conn_0 {
+			gpios = <&gpio0 15 0>;
+			label = "nRF91 connector 1";
+		};
+		inter_conn1: inter_conn_1 {
+			gpios = <&gpio0 17 0>;
+			label = "nRF91 connector 2";
+		};
+		inter_conn2: inter_conn_2 {
+			gpios = <&gpio0 20 0>;
+			label = "nRF91 connector 3";
+		};
+		inter_conn3: inter_conn_3 {
+			gpios = <&gpio0 8 0>;
+			label = "nRF91 connector 4";
+		};
+		inter_conn4: inter_conn_4 {
+			gpios = <&gpio0 12 0>;
+			label = "nRF91 connector 5";
+		};
+		inter_conn5: inter_conn_5 {
+			gpios = <&gpio0 11 0>;
+			label = "nRF91 connector 6";
+		};
+		inter_conn6: inter_conn_6 {
+			gpios = <&gpio1 13 0>;
+			label = "nRF91 COEX 0";
+		};
+		inter_conn7: inter_conn_7 {
+			gpios = <&gpio1 11 0>;
+			label = "nRF91 COEX 1";
+		};
+		inter_conn8: inter_conn_8 {
+			gpios = <&gpio1 15 0>;
+			label = "nRF91 COEX 2";
+		};
+		inter_conn9: inter_conn_9 {
+			gpios = <&gpio0 13 (GPIO_OPEN_DRAIN)>;
+			label = "nRF91 Reset";
+		};
+
+		inter_conn11: inter_conn_11 {
+			gpios = <&gpio1 8 (GPIO_PULL_UP)>;
+			label = "Power Good";
+		};
+		inter_conn12: inter_conn_12 {
+			gpios = <&gpio0 27 0>;
+			label = "VDD Supply Measure Enable";
+		};
+	};
+
+	arduino_header: connector {
+		compatible = "arduino-header-r3";
+		#gpio-cells = <2>;
+		gpio-map-mask = <0xffffffff 0xffffffc0>;
+		gpio-map-pass-thru = <0 0x3f>;
+		gpio-map = <2 0 &gpio0 2 0>,	/* A2 */
+			   <3 0 &gpio0 3 0>,	/* A3 */
+			   <4 0 &gpio0 2 0>,	/* A4 */
+			   <5 0 &gpio0 3 0>,	/* A5 */
+			   <6 0 &gpio0 4 0>,	/* D0 */
+			   <7 0 &gpio0 5 0>,	/* D1 */
+			   <8 0 &gpio0 4 0>,	/* D2 */
+			   <9 0 &gpio0 5 0>,	/* D3 */
+			   <12 0 &gpio0 19 0>,	/* D6 */
+			   <13 0 &gpio0 21 0>,	/* D7 */
+			   <14 0 &gpio0 24 0>,	/* D8 */
+			   <15 0 &gpio1 0 0>,	/* D9 */
+			   <16 0 &gpio0 19 0>,	/* D10 */
+			   <17 0 &gpio0 21 0>,	/* D11 */
+			   <18 0 &gpio0 24 0>,	/* D12 */
+			   <19 0 &gpio1 0 0>;	/* D13 */
+	};
+
+	arduino_pins {
+		compatible = "gpio-keys";
+		arduino_pin2: arduino_pin_2 {
+			gpios = <&gpio0 2 0>;
+			label = "Arduino A2";
+		};
+		arduino_pin3: arduino_pin_3 {
+			gpios = <&gpio0 3 0>;
+			label = "Arduino A3";
+		};
+		arduino_pin4: arduino_pin_4 {
+			gpios = <&gpio0 2 0>;
+			label = "Arduino A4";
+		};
+		arduino_pin5: arduino_pin_5 {
+			gpios = <&gpio0 3 0>;
+			label = "Arduino A5";
+		};
+		arduino_pin6: arduino_pin_6 {
+			gpios = <&gpio0 4 0>;
+			label = "Arduino D0";
+		};
+		arduino_pin7: arduino_pin_7 {
+			gpios = <&gpio0 5 0>;
+			label = "Arduino D1";
+		};
+		arduino_pin8: arduino_pin_8 {
+			gpios = <&gpio0 4 0>;
+			label = "Arduino D2";
+		};
+		arduino_pin9: arduino_pin_9 {
+			gpios = <&gpio0 5 0>;
+			label = "Arduino D3";
+		};
+		arduino_pin12: arduino_pin_12 {
+			gpios = <&gpio0 19 0>;
+			label = "Arduino D6";
+		};
+		arduino_pin13: arduino_pin_13 {
+			gpios = <&gpio0 21 0>;
+			label = "Arduino D7";
+		};
+		arduino_pin14: arduino_pin_14 {
+			gpios = <&gpio0 24 0>;
+			label = "Arduino D8";
+		};
+		arduino_pin15: arduino_pin_15 {
+			gpios = <&gpio1 0 0>;
+			label = "Arduino D9";
+		};
+		arduino_pin16: arduino_pin_16 {
+			gpios = <&gpio0 19 0>;
+			label = "Arduino D10";
+		};
+		arduino_pin17: arduino_pin_17 {
+			gpios = <&gpio0 21 0>;
+			label = "Arduino D11";
+		};
+		arduino_pin18: arduino_pin_18 {
+			gpios = <&gpio0 24 0>;
+			label = "Arduino D12";
+		};
+		arduino_pin19: arduino_pin_19 {
+			gpios = <&gpio1 0 0>;
+			label = "Arduino D13";
+		};
+	};
+
+	/* These aliases are provided for compatibility with samples */
+	aliases {
+	
+		interconn-c0 = &inter_conn0;
+		interconn-c1 = &inter_conn1;
+		interconn-c2 = &inter_conn2;
+		interconn-c3 = &inter_conn3;
+		interconn-c4 = &inter_conn4;
+		interconn-c5 = &inter_conn5;
+		nrf91-coex0 = &inter_conn6;
+		nrf91-coex1 = &inter_conn7;
+		nrf91-coex2 = &inter_conn8;
+		nrf91-reset = &inter_conn9;
+		pwr-good = &inter_conn11;
+		vdd-meas-enable = &inter_conn12;
+		
+		ard-a2 = &arduino_pin2;
+		ard-a3 = &arduino_pin3;
+		ard-a4 = &arduino_pin4;
+		ard-a5 = &arduino_pin5;
+		ard-d0 = &arduino_pin6;
+		ard-d1 = &arduino_pin7;
+		ard-d2 = &arduino_pin8;
+		ard-d3 = &arduino_pin9;
+		ard-d6 = &arduino_pin12;
+		ard-d7 = &arduino_pin13;
+		ard-d8 = &arduino_pin14;
+		ard-d9 = &arduino_pin15;
+		ard-d10 = &arduino_pin16;
+		ard-d11 = &arduino_pin17;
+		ard-d12 = &arduino_pin18;
+		ard-d13 = &arduino_pin19;
+		
+		sens-i2c = &i2c0;
+	};
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&uart0 {
+	compatible = "nordic,nrf-uart";
+	status = "okay";
+	current-speed = <115200>;
+	tx-pin = <24>;
+	rx-pin = <32>;
+};
+
+&flash0 {
+	/*
+	 * For more information, see:
+	 * https://docs.zephyrproject.org/latest/guides/dts/legacy-macros.html#legacy-flash-partitions
+	 */
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x000000000 0x0000C000>;
+		};
+		slot0_partition: partition@c000 {
+			label = "image-0";
+			reg = <0x0000C000 0x00067000>;
+		};
+		slot1_partition: partition@73000 {
+			label = "image-1";
+			reg = <0x00073000 0x00067000>;
+		};
+		scratch_partition: partition@da000 {
+			label = "image-scratch";
+			reg = <0x000da000 0x0001e000>;
+		};
+
+		/*
+		 * The flash starting at 0x000f8000 and ending at
+		 * 0x000fffff is reserved for use by the application.
+		 */
+
+		/*
+		 * Storage partition will be used by FCB/LittleFS/NVS
+		 * if enabled.
+		 */
+		storage_partition: partition@f8000 {
+			label = "storage";
+			reg = <0x000f8000 0x00008000>;
+		};
+	};
+};
+
+&usbd {
+	compatible = "nordic,nrf-usbd";
+	status = "okay";
+};

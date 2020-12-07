@@ -1,0 +1,22 @@
+AVT9152 EVB SDK v1
+------------------------------
+03 December 2020
+
+
+Dependencies
+============
+
+Code base: NCS v1.4.0
+Modem firmware: mfw_nrf9160_1.2.2
+SUPL lib: v0.6.1
+
+
+Toolchain
+=========
+GCC: GCC ARM Embedded 9.2019q4.major
+SES: SES for Arm (Nordic Edition) v5.10d
+
+
+Change log
+==========
+NA
