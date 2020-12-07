@@ -1,4 +1,4 @@
-AVT9152 EVB SDK v1
+AVT9152 EVB SDK v1.0
 ------------------------------
 03 December 2020
 
