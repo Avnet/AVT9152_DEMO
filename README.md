@@ -14,7 +14,7 @@ To get started with the [AVT9152 EVB][evb_link], please refer to [AVT9152 EVB Qu
 
 
 [evb_link]:
-https://onesite-preprod.avnet.com/wps/portal/$project/AB%20AVT9152/us/products/avnet-boards/avnet-board-families/avnet-avt9152/avt9152kit-eval-kit/
+https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/avnet-avt9152/avt9152kit-eval-kit
 
 [evb_quick_start_link]:
 http://avnet.me/AVT9152QSG
