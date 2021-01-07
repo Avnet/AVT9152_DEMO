@@ -1,3 +1,34 @@
+
+AVT9152 EVB SDK v1.1
+------------------------------
+06 January 2021
+
+
+Dependencies
+============
+
+Code base: NCS v1.4.0
+Modem firmware: mfw_nrf9160_1.2.2
+SUPL lib: v0.6.1
+
+
+Toolchain
+=========
+GCC: GCC ARM Embedded 9.2019q4.major
+SES: SES for Arm (Nordic Edition) v5.10d
+
+
+Change log
+==========
+
+demo_IoTConnect (v1.0.2)
+- [libiotconnect.a] Improve handling of data from IoTConnect during init.
+- [libiotconnect.a] Fix system crash leading to reset upon receipt of cmdType 0x15 from IoTConnect. 
+
+
+____________________________________________________________________________________________________
+
+
 AVT9152 EVB SDK v1.0
 ------------------------------
 03 December 2020

@@ -78,8 +78,6 @@ static int lte_mode_nvs_write(uint8_t mode);
 static void send_device_static_properties_data(void);
 static void get_device_properties_data(void);
 
-static char m_recv_buf[IOTCONNECT_PAYLOAD_BUFFER_SIZE];
-
 static enum lte_lc_nw_reg_status m_lte_lc_nw_reg_status;
 
 #define IMEI_LEN        15
@@ -439,7 +437,7 @@ static void c2d_data_handler(IoTConnect_dev_c2d_event_t *p_evt)
         }
     } else {
         /*TODO: handle other possible C2D commands listed in IoTConnect.h */
-        LOG_ERR("Unexpected cmdType 0x%02x received", (uint8_t)p_evt->cmd_type);
+        LOG_WRN("cmdType 0x%02x not handled", (uint8_t)p_evt->cmd_type);
     }
 }
 
@@ -565,7 +563,6 @@ static void iotconnect_event_handler(IoTConnect_event_t *p_evt)
 
         case IOTCONNECT_EVT_DEV_C2D_DATA:
             LOG_INF("IOTCONNECT_EVT_DEV_C2D_DATA");
-            LOG_INF("%s", m_recv_buf);
 
             if ((m_do_reboot == false) && 
                 (m_do_switch_to_command_mode == false)) {
@@ -630,6 +627,7 @@ void fota_dl_handler(const struct fota_download_evt *evt)
         }
         if (status == (IoTConnect_dev_status_t)IoTConnect_ack_status_ota_ok) {
             LOG_DBG("ota ack message id %d", m_ota_ack_msg_id);
+            LOG_INF("Please wait for the device to reboot to apply the image upgrade");
             m_do_reboot = true;
         } else {
             m_ota_ack_msg_id = 0;
